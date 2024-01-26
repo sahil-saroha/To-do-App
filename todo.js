@@ -1,38 +1,34 @@
-let btn  = document.querySelector("button");
-let ul  = document.querySelector("ul");
-let inp  = document.querySelector("input");
+let addTaskBtn = document.getElementById("addTaskBtn");
+let taskList = document.getElementById("taskList");
+let inputTask = document.querySelector("input");
 
-btn.addEventListener("click" , function(){
-    let item = document.createElement("li");
-    item.innerText= inp.value;
-  
+function addTask() {
+    if (inputTask.value.trim() !== "") {
+        let listItem = document.createElement("li");
+        listItem.innerText = inputTask.value;
 
-    let dltbtn = document.createElement("button");
-    dltbtn.innerText= "Delete";
-    dltbtn.classList.add("delete");
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.classList.add("delete");
 
+        listItem.appendChild(deleteBtn);
+        taskList.appendChild(listItem);
 
-    item.appendChild(dltbtn);
-    ul.appendChild(item);
-    console.log(inp.value);
-    inp.value = "";
-   
-})
-
-ul.addEventListener("click" , function(event){
-    if((event.target.nodeName)="BUTTON"){
-       
-    let listItem = event.target.parentElement;
-    console.log(listItem);
-    listItem.remove();
+        inputTask.value = "";
     }
-   
-   
-})
-// let dltbtn = document.querySelectorAll(".delete");
-// for(dltbTn of dltbtn){
-//     dltbTn.addEventListener("click" , function(){
-//         let parent = this.parentElement;
-//      parent.remove();
-//     })
-// }
+}
+
+addTaskBtn.addEventListener("click", addTask);
+
+inputTask.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        addTask();
+    }
+});
+
+taskList.addEventListener("click", function (event) {
+    if (event.target.classList.contains("delete")) {
+        let listItem = event.target.parentElement;
+        listItem.remove();
+    }
+});

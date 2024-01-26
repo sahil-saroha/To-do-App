@@ -25,7 +25,16 @@ body {
 }
 
 h1 {
-    color: #333;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    
+}
+h1 img{
+    height: 50px;
+    width: 60px;
+    padding-left: 2px;
 }
 
 input {
@@ -42,7 +51,7 @@ button {
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: #4e085f;
+    background-color: #4CAF50;
     color: #fff;
     cursor: pointer;
 }
@@ -63,7 +72,7 @@ li {
 }
 
 .delete {
-    background-color: #e74c3c;
+    background-color: #b62414;
     color: #fff;
     border: none;
     padding: 5px 10px;
